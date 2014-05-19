@@ -12,6 +12,12 @@ define(function(require) {
 
         preRender: function () {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
+
+            // if not already hidden via a plugin
+            if (this.model.get('_isVisible') && !this.model.get('_isComplete')) {
+                this.model.set('_isHidden', true);
+                this.$el.addClass('visibility-hidden');
+            }
         },
 
         postRender: function() {
@@ -24,6 +30,12 @@ define(function(require) {
                'feedbackMessage': data.feedbackMessage, 
               '_associatedLearning': data.associatedLearning
             });
+
+            // if hidden internally - not via a plugin
+            if (this.model.get('_isHidden')) {
+                this.model.set('_isHidden', false);
+                this.$el.removeClass('visibility-hidden');
+            }
 
             this.render();
         },

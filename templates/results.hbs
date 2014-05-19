@@ -1,25 +1,33 @@
-<div class="text-inner component-inner">
+<div class="results-inner component-inner">
     {{#if title}}
-    <div class="text-title component-title">
-        <h4 class="text-title-inner component-title-inner">
+    <div class="results-title component-title">
+        <h4 class="results-title-inner component-title-inner">
             {{{title}}}
         </h4>
     </div>
     {{/if}}
     {{#if body}}
-    <div class="text-body component-body">
-        <div class="text-body-inner component-body-inner">
+    <div class="results-body component-body">
+        <div class="results-body-inner component-body-inner">
             {{{body}}}
-
+        </div>
+    </div>
+    {{/if}}
+    {{#if feedbackMessage}}
+    <div class="results-feedback component-feedback">
+        <div class="results-feedback-inner component-feedback-inner">
             {{{feedbackMessage}}}
-
-            {{#if _associatedLearning}}
+        </div>
+    </div>
+    {{/if}}
+    {{#if _associatedLearning}}
+    <div class="results-associatedLearning component-associatedLearning">
+        <div class="results-associatedLearning-inner component-associatedLearning-inner">
             <ul>
                 {{#each _associatedLearning}}
                     <li>{{this}}</li>
                 {{/each}}
             </ul>
-            {{/if}}
         </div>
     </div>
     {{/if}}
