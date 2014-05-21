@@ -10,11 +10,15 @@ define(function(require) {
 
     var Results = ComponentView.extend({
 
+        events: {
+            'click .associatedLearning-link': 'onLinkClicked'
+        },
+
         preRender: function () {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
 
             // if not already hidden via a plugin
-            if (this.model.get('_isVisible') && !this.model.get('_isComplete')) {
+            if (this.model.get('_isVisible') && !this.model.get('_isComplete') && this.model.get('_isEnabledOnRevisit')) {
                 this.model.set('_isHidden', true);
                 this.$el.addClass('visibility-hidden');
             }
@@ -38,6 +42,13 @@ define(function(require) {
             }
 
             this.render();
+        },
+
+        onLinkClicked: function(event) {
+            event.preventDefault();
+            
+            var currentTarget = $(event.currentTarget);
+            var linkTo = currentTarget.data('id');
         },
 
         inview: function(event, visible, visiblePartX, visiblePartY) {

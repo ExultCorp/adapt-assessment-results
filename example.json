@@ -9,6 +9,7 @@
     "displayTitle":"Results",
     "body":"This component you're reading is a results component. The feedback itself comes from the _assessment object in articles.json.",
     "instruction":"",
+    "_linkToAssociatedLearning": false,
     "_pageLevelProgress": {
         "_isEnabled": true
     }

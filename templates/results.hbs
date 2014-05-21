@@ -25,7 +25,11 @@
         <div class="results-associatedLearning-inner component-associatedLearning-inner">
             <ul>
                 {{#each _associatedLearning}}
-                    <li>{{this}}</li>
+                    {{#if ../_linkToAssociatedLearning}}
+                        <a href="#" class="associatedLearning-link" data-id="{{id}}"><li>{{title}}</li></a>
+                    {{else}}
+                        <li>{{title}}</li>
+                    {{/if}}
                 {{/each}}
             </ul>
         </div>
