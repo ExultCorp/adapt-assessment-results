@@ -48,7 +48,9 @@ define(function(require) {
             event.preventDefault();
             
             var currentTarget = $(event.currentTarget);
-            var linkTo = currentTarget.data('id');
+            var type = currentTarget.data('type');
+
+            Adapt.navigateToElement(currentTarget.data('id'), currentTarget.data('type'))
         },
 
         inview: function(event, visible, visiblePartX, visiblePartY) {

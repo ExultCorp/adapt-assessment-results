@@ -26,7 +26,7 @@
             <ul>
                 {{#each _associatedLearning}}
                     {{#if ../_linkToAssociatedLearning}}
-                        <a href="#" class="associatedLearning-link" data-id="{{id}}"><li>{{title}}</li></a>
+                        <a href="#" class="associatedLearning-link" data-id="{{id}}" data-type="{{type}}"><li>{{title}}</li></a>
                     {{else}}
                         <li>{{title}}</li>
                     {{/if}}
