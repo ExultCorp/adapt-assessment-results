@@ -18,7 +18,7 @@ define(function(require) {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
 
             // if not already hidden via a plugin
-            var hide = (!this.model.get('_isComplete')  || (this.model.get('_isComplete') &&  this.model.get('_isEnabledOnRevisit'))); 
+            var hide = (!this.model.get('_completeInSession') || (this.model.get('_isComplete') &&  this.model.get('_isEnabledOnRevisit'))); 
             //console.log("results.js: " + this.model.get('_isComplete') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
            
             //console.log("results, is visible?: " + this.model.get('_isVisible'));
@@ -58,7 +58,10 @@ define(function(require) {
         },
 
         inview: function(event, visible, visiblePartX, visiblePartY) {
+            if(this.model.get('_isHidden')) return;
+            console.log("results.js,inview, visible: " + visible);
             if (visible) {
+                console.log("visiblePartY: " + visiblePartY);
                 if (visiblePartY === 'top') {
                     this._isVisibleTop = true;
                 } else if (visiblePartY === 'bottom') {
@@ -67,10 +70,11 @@ define(function(require) {
                     this._isVisibleTop = true;
                     this._isVisibleBottom = true;
                 }
-
+                
                 if (this._isVisibleTop && this._isVisibleBottom) {
                     this.$('.component-body').off('inview');
                     this.setCompletionStatus();
+                    this.model.set('_completeInSession', true);
                 }
                 
             }
