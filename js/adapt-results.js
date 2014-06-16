@@ -18,14 +18,9 @@ define(function(require) {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
 
             // if not already hidden via a plugin
-            var hide = (!this.model.get('_completeInSession') || (this.model.get('_isComplete') &&  this.model.get('_isEnabledOnRevisit'))); 
+            var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isEnabledOnRevisit'))); 
             //console.log("results.js: " + this.model.get('_isComplete') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
-           
-            //console.log("results, is visible?: " + this.model.get('_isVisible'));
-            if (this.model.get('_isVisible') && hide) {
-                this.model.set('_isHidden', true);
-                this.$el.addClass('visibility-hidden');
-            }
+            if (hide) this.model.set('_isVisible', false, {pluginName: '_results'});
         },
 
         postRender: function() {
@@ -39,11 +34,7 @@ define(function(require) {
               '_associatedLearning': data.associatedLearning
             });
 
-            // if hidden internally - not via a plugin
-            if (this.model.get('_isHidden')) {
-                this.model.set('_isHidden', false);
-                this.$el.removeClass('visibility-hidden');
-            }
+            if(!this.model.get('_isVisible')) this.model.set('_isVisible', true, {pluginName: '_results'});
 
             this.render();
         },
