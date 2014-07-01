@@ -19,7 +19,7 @@ define(function(require) {
 
             // if not already hidden via a plugin
             var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isEnabledOnRevisit'))); 
-            //console.log("results.js: " + this.model.get('_isComplete') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
+            console.log("results.js: " + this.model.get('_completeInSession') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
             if (hide) this.model.set('_isVisible', false, {pluginName: '_results'});
         },
 
@@ -50,9 +50,8 @@ define(function(require) {
 
         inview: function(event, visible, visiblePartX, visiblePartY) {
             if(this.model.get('_isHidden')) return;
-            console.log("results.js,inview, visible: " + visible);
+            //console.log("results.js,inview, visible: " + visible);
             if (visible) {
-                console.log("visiblePartY: " + visiblePartY);
                 if (visiblePartY === 'top') {
                     this._isVisibleTop = true;
                 } else if (visiblePartY === 'bottom') {
