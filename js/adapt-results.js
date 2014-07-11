@@ -18,8 +18,8 @@ define(function(require) {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
 
             // if not already hidden via a plugin
-            var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isEnabledOnRevisit'))); 
-            console.log("results.js: " + this.model.get('_completeInSession') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
+            var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isResetOnRevisit'))); 
+            console.log("results.js: " + this.model.get('_completeInSession') + " - " + this.model.get('_isResetOnRevisit') + " - " + hide);
             if (hide) this.model.set('_isVisible', false, {pluginName: '_results'});
         },
 
@@ -29,6 +29,7 @@ define(function(require) {
         },
 
         onAssessmentComplete: function(data) {
+            //console.log("results.js,onAssessmentComplete");
             this.model.set({
                'feedbackMessage': data.feedbackMessage, 
               '_associatedLearning': data.associatedLearning
