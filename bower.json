@@ -1,11 +1,11 @@
 {
-  "name": "adapt-results",
+  "name": "adapt-assessment-results",
   "version": "0.0.1",
-  "homepage": "https://github.com/cgkineo/adapt-results",
+  "homepage": "https://github.com/cgkineo/adapt-assessment-results",
   "authors": [
     "Dan Ghost <danielghost@kineo.com>"
   ],
-  "description": "A simple core contributed text component",
+  "description": "A component used to display the assessment results.",
   "main": "/js/adapt-results.js",
   "keywords": [
     "adapt-plugin",

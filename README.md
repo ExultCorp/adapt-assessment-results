@@ -1,4 +1,4 @@
-adapt-results
+adapt-assessment-results
 ==================
 
 A component used to display the assessment results. Can only be used in conjunction with [adapt-contrib-assessment](https://github.com/cgkineo/adapt-contrib-assessment). Feedback and associated learning are worked out in the assessment and passed to the results component to display. Will display associated links if set up in quiz questions - will filter links so duplicate entries are displayed only once.

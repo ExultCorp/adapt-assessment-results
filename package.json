@@ -1,5 +1,5 @@
 {
-  "name": "adapt-results",
+  "name": "adapt-assessment-results",
   "version": "0.0.1",
   "description": "A component used to display the assessment results.",
   "main": "",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/cgkineo/adapt-results.git"
+    "url": "git://github.com/cgkineo/adapt-assessment-results.git"
   },
   "author": "AdaptLearning",
   "license": "GPL v3",

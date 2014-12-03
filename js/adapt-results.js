@@ -1,6 +1,6 @@
 /*
-* adapt-contrib-results
-* License - https://github.com/cgkineo/adapt-results/LICENSE
+* adapt-assessment-results
+* License - https://github.com/cgkineo/adapt-assessment-results/LICENSE
 * Maintainers - Dan Ghost <daniel.ghost@kineo.com>, Gavin McMaster <gavin.mcmaster@kineo.com>
 */
 define(function(require) {
