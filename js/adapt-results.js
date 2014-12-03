@@ -1,7 +1,7 @@
 /*
 * adapt-contrib-results
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Daryl Hedley <darylhedley@hotmail.com>
+* License - https://github.com/cgkineo/adapt-results/LICENSE
+* Maintainers - Dan Ghost <daniel.ghost@kineo.com>, Gavin McMaster <gavin.mcmaster@kineo.com>
 */
 define(function(require) {
 
@@ -18,14 +18,13 @@ define(function(require) {
             this.listenTo(Adapt, 'assessment:complete', this.onAssessmentComplete);
 
             // if not already hidden via a plugin
-            var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isEnabledOnRevisit'))); 
-            //console.log("results.js: " + this.model.get('_isComplete') + " - " + this.model.get('_isEnabledOnRevisit') + " - " + hide);
+            var hide = (!this.model.get('_completeInSession') || (this.model.get('_completeInSession') &&  this.model.get('_isEnabledOnRevisit')));
             if (hide) this.model.set('_isVisible', false, {pluginName: '_results'});
         },
 
         postRender: function() {
             this.setReadyStatus();
-            this.$('.component-body').on('inview', _.bind(this.inview, this));
+            this.$('.component-inner').on('inview', _.bind(this.inview, this));
         },
 
         onAssessmentComplete: function(data) {
@@ -34,7 +33,7 @@ define(function(require) {
               '_associatedLearning': data.associatedLearning
             });
 
-            if(!this.model.get('_isVisible')) this.model.set('_isVisible', true, {pluginName: '_results'});
+            if (!this.model.get('_isVisible')) this.model.set('_isVisible', true, {pluginName: '_results'});
 
             this.render();
         },
@@ -49,10 +48,9 @@ define(function(require) {
         },
 
         inview: function(event, visible, visiblePartX, visiblePartY) {
-            if(this.model.get('_isHidden')) return;
-            console.log("results.js,inview, visible: " + visible);
+            if (this.model.get('_isHidden')) return;
+
             if (visible) {
-                console.log("visiblePartY: " + visiblePartY);
                 if (visiblePartY === 'top') {
                     this._isVisibleTop = true;
                 } else if (visiblePartY === 'bottom') {
@@ -63,11 +61,10 @@ define(function(require) {
                 }
                 
                 if (this._isVisibleTop && this._isVisibleBottom) {
-                    this.$('.component-body').off('inview');
+                    this.$('.component-inner').off('inview');
                     this.setCompletionStatus();
                     this.model.set('_completeInSession', true);
                 }
-                
             }
         }
         
